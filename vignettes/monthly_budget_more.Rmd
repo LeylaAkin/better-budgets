@@ -1,0 +1,80 @@
+---
+title: "Interactive Monthly Budget"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Interactive Monthly Budget}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(betterBudgets)
+```
+
+
+## Introduction
+
+The `monthly_budget_more()` function allows users to get a summary table and bar 
+plot of monetary allocations for different budget areas, including food, 
+healthcare, transportation, housing, savings, and miscellaneous. 
+
+The default setting of the function, which has the argument `interactive` set to
+`FALSE` provides suggestions based on nationally recommended values for different
+budget areas. However, setting `interactive` to `TRUE` allows users to rate how
+important these different areas are for them, and then computes budget allocations
+accordingly.
+
+The `do_both()` function is an extension of `monthly_budget_more()`, and allows
+you to have an interactive interface to enter your income.
+
+## Examples
+
+You can get a summary table and visualization for budget allocations for an 
+annual income of $100,000 like se:
+
+```{r}
+my_budget <- monthly_budget_more(100000)
+
+# access the summary table
+my_budget$budget
+
+# access the visualization
+my_budget$bar_plot
+```
+
+
+You can also modify different parameters of the visualization by inputting
+arguments that are fed into the `layer()` function in the `ggplot2` package.
+
+For example, to get a bar plot of orchid colored-fill, simply input 
+`fill = "orchid` like so:
+
+```{r}
+my_budget <- monthly_budget_more(100000, fill = "orchid")
+
+# access the summary table
+my_budget$budget
+
+# access the visualization
+my_budget$bar_plot
+```
+
+
+You can also rate how important the different budget areas are for you by setting
+the `interactive` parameter to `TRUE`
+
+```{r}
+# my_budget <- monthly_budget_more(100000, interactive = TRUE, fill = "orchid")
+```
+
+
+
+
+

@@ -1,0 +1,53 @@
+---
+title: "Advanced Functions"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Advanced Functions}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(betterBudgets)
+```
+
+## Introduction 
+
+The following advanced functions`food_budget()` and `transportation_budget()` help users budget more effectively by offering them useful tips and recommendations for saving money, in addition to calculating the percentage of monthly income users should allocate to each category. We added these advanced uses to these functions to account for the situational differences and different needs each person may have or want to consider as they create their budget. 
+
+## Functions
+
+Advanced functions in the package:
+
+  - `food_budget()`
+  
+    + `food_budget()` allows users to input their monthly income, or a list of monthly incomes, and calculate the recommended or self-selected monthly expenditure on food. In addition to this, the function can output tips on how to save money on food. It also gives users the ability to divide their food budget into recommended budgets for groceries and takeout.
+    
+    
+  - `transportation_budget()`
+  
+    + `transportation_budget()` enables users to enter their monthly income and        receive a recommendation on how much money they should allocate towards            transportation expenses. If the `tip` argument is set to TRUE, the function        provides tips for saving money on transportation. Likewise, if the `rec`           argument is set to TRUE, the user is presented with price comparisons between      driving and taking public transportation, as well as time comparisons between      walking or biking.
+  
+
+## Examples 
+
+You can use `transportation_budget()` in the following way. In this example, we have a monthly income of \$5000 and allocate 15% of it towards transportation. By setting tip and rec to TRUE, the user gets additional tips and saving recommendations. The recommendations are based on a daily travel distance of 40 miles, using a car whose comsumption is 20 mpg, and assuming fuel cost of \$3.50 per gallon.
+
+```{r}
+transportation_budget(income = 5000, pct = 0.15, tip = TRUE, rec = TRUE, dist = 40, consump = 20, cpg = 3.5)
+```
+
+You can use `food_budget()` in the following way. In this example, we set the income, and keep the recommended percentage of the income for the budget, and set tip to TRUE and food_split to TRUE so that the function will output the budget, the recommended tips, and the budgets for groceries and takeout.
+
+```{r}
+food_budget(income = 3000, pct = 0.15, tip = TRUE, food_split = TRUE)
+```
+
+

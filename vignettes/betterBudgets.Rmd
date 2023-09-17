@@ -1,0 +1,136 @@
+---
+title: "betterBudgets"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{betterBudgets}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(betterBudgets)
+```
+
+## Introduction 
+
+This package is meant to help users budget better easily. It provides functions to compute monthly income, and then use that to create different components of the users monthly budget. This will include functions to calculate healthcare, food, and savings budgets, among others.
+
+## Functions
+
+The package includes the following functions:
+
+  - `user_income()`
+  
+    + `user_income()` enables users to input their annual income which is 
+    converted to monthly income. The other functions like percentage of income 
+    that should be spent on healthcare can then be built on this function. 
+  
+  - `healthcare_budget()`
+  
+    + `healthcare_budget()` enables users to calculate how much income they should
+    set aside for healthcare, depending on their monthly income
+  
+  - `housing_budget()`
+  
+    + `housing_budget()` enables users to calculate how much income they should
+    set aside for housing, depending on their monthly income
+  
+  - `savings_budget()`
+  
+    + `savings_budget()` enables users to calculate how much income they should
+    set aside for their savings, depending on their monthly income
+  
+  - `food_budget()`
+  
+    + `food_budget()` enables users to calculate how much income they should
+    set aside for food, depending on their monthly income
+  
+  - `transportation_budget()`
+  
+    + `transportation_budget()` enables users to calculate how much income they
+    should set aside for transportation, depending on their monthly income
+  
+  - `other_budget()`
+  
+    + `other_budget()` enables users to calculate how much income they should
+    set aside for miscellaneous purposes, depending on their monthly income
+    
+  - `monthly_budget_more()`
+  
+    + `monthly_budget_more()` enables users to get a summary table of how much they
+    should set aside for each major budget area, depending on how they rate the
+    different and their monthly income
+  
+  - `housing_rec()` 
+    + `housing_rec()` enables users to get a summary table of housing
+    recommendations:
+    
+      * if they input a state abbreviation, they will get a recommendation for
+      how much they should earn annually to own a home in that state
+      
+      * if they input the kind of home they want to own, which can be one of 
+      "Rent", "Conventional", "Contemporary", or "Multi-Storey Home", then they
+      get a recommendation for how much they should earn annually to own that kind
+      of home
+      
+      * if they input their annual income, they get a recommendation for the kind
+      of home they can own with that income
+
+## Examples 
+
+To use the `user_income()`, simply enter the user's yearly income as a numeric value. 
+
+```{r}
+# Calculating monthly income for a yearly income of 100000
+
+income <- 100000
+monthly_income <- user_income(100000)
+monthly_income 
+
+```
+
+You can use `food_budget` to compute the recommended value to set aside for food for an annual income of $70,000
+
+```{r}
+food_budget(70000)
+```
+
+
+You can use `other_budget()` to compute the recommended values to set aside
+for miscellaneous purposes for different incomes.
+
+```{r}
+other_budget(10000, 202020, 123456)
+```
+
+You can use `housing_rec()` to get housing recommendations for:
+
+  - a person living in New York
+  
+  - a person living in California
+  
+  - a person who earns $100,000 annually
+  
+  - a person who wants to rent a house
+  
+  - a person who earns $60,000 annually
+  
+```{r}
+housing_rec("NY", "CA", "$100,000", "Rent", 60000)
+```
+
+
+
+
+
+
+
+
+

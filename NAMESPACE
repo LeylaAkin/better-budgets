@@ -1,0 +1,5 @@
+exportPattern("^[[:alpha:]]+")
+S3method(tips,housing)
+S3method(tips,food)
+S3method(tips,transportation)
+
